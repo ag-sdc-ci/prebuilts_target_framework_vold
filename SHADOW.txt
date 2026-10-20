@@ -1,0 +1,5 @@
+upstream_repo: system/vold
+framework_extractive: true
+package: org.blisslabs.ag.ext.vold.framework
+source: https://github.com/LineageOS-TV-x86/android_system_vold
+build_type: extractive_apex

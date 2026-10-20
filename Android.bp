@@ -1,0 +1,54 @@
+// Auto-generated Blueprint for system/vold (framework extractive)
+// Staged from Extractive APEX package: org.blisslabs.ag.ext.vold
+
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+filegroup {
+    name: "vold_aidl",
+    srcs: [
+        "binder/android/os/IVold.aidl",
+        "binder/android/os/IVoldListener.aidl",
+        "binder/android/os/IVoldMountCallback.aidl",
+        "binder/android/os/IVoldTaskListener.aidl",
+    ],
+    path: "binder",
+}
+
+cc_library_static {
+    name: "libvold_binder",
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+        "-Wno-unused-parameter",
+    ],
+    srcs: [
+        ":vold_aidl",
+    ],
+    shared_libs: [
+        "libbinder",
+        "libutils",
+    ],
+    aidl: {
+        local_include_dirs: ["binder"],
+        include_dirs: [
+            "frameworks/native/aidl/binder",
+            "frameworks/base/core/java",
+        ],
+        export_aidl_headers: true,
+    },
+    whole_static_libs: [
+        "libincremental_aidl-cpp",
+    ],
+    export_shared_lib_headers: [
+        "libbinder",
+    ],
+}
+
+cc_library_headers {
+    name: "libvold_headers",
+    recovery_available: true,
+    export_include_dirs: ["."],
+}
